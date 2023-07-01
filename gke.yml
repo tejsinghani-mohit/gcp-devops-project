@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gcp-deployment-gke
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gcp
+  template:
+    metadata:
+      labels:
+        app: gcp
+    spec:
+      containers:
+      - name: gcp-deployment-gke
+        image: gcr.io/gcp-devops-390912/gcpdevops@sha256:a01358132a3a3a4c49e5c23363417cc77e851e97b01dc5d875bf1ef535c6d5d6
+        ports:
+        - containerPort: 5000
+        env:
+        - name: PORT
+          value: "5000"
